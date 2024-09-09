@@ -64,7 +64,6 @@ export const recordSpeech = async (
             console.error("Failed to prepare recording", e);
           });
       }
-      console.log("STEAATING");
       await audioRecordingRef?.current?.startAsync();
     } else {
       console.error("Permission to record audio is required!");
