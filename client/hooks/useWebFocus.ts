@@ -10,12 +10,16 @@ const useWebFocus = () => {
     const onFocus = () => setFocus(true);
     const onBlur = () => setFocus(false);
 
-    window?.addEventListener("focus", onFocus);
-    window?.addEventListener("blur", onBlur);
+    if (window?.addEventListener) {
+      window.addEventListener("focus", onFocus);
+      window.addEventListener("blur", onBlur);
+    }
 
     return () => {
-      window?.removeEventListener("focus", onFocus);
-      window?.removeEventListener("blur", onBlur);
+      if (window?.removeEventListener) {
+        window.removeEventListener("focus", onFocus);
+        window.removeEventListener("blur", onBlur);
+      }
     };
   }, []);
 
